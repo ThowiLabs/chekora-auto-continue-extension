@@ -9,14 +9,17 @@
 <body>
   <main>
     <h1>Continue Editing</h1>
-    <p class="subtitle">Mantener sesión interactiva</p>
+    <p class="subtitle">Mantener sesión interactiva · v1.1.0</p>
     <label class="switch">
       <input id="enabled" type="checkbox" checked>
       <span>Activar clic automático</span>
     </label>
     <p id="status" role="status">Cargando configuración…</p>
     <p class="counter">Clics realizados: <strong id="clickCount">0</strong></p>
-    <p class="note">Solo actúa cuando encuentra el aviso «Are you still there?» y el botón «Continue editing». No envía datos a ningún servidor.</p>
+    <p class="counter">Último clic: <strong id="lastClick">Ninguno</strong></p>
+    <button id="diagnose" type="button">Diagnosticar pestaña actual</button>
+    <p id="diagnostic" role="status" aria-live="polite">Usa el diagnóstico si no funciona en tu visor HTML.</p>
+    <p class="note">Las páginas que solo muestran el código HTML como texto no contienen un botón pulsable. Un clic de JavaScript no equivale a un clic humano y puede detectarse.</p>
   </main>
   <script src="popup.js"></script>
 </body>

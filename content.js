@@ -75,7 +75,7 @@
     try {
       chrome.storage.local.get({ clickCount: 0 }, ({ clickCount }) => {
         if (chrome.runtime.lastError) return;
-        chrome.storage.local.set({ clickCount: clickCount + 1 });
+        chrome.storage.local.set({ clickCount: clickCount + 1, lastClickAt: Date.now() });
       });
     } catch (_) {
       // The extension may have been reloaded while this tab remains open.

@@ -1,26 +1,44 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><title>Auto Continue Editing — Test</title></head>
+<head>
+<meta charset="utf-8">
+<title>Auto Continue Editing — Test de detección</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; padding: 30px; }
+  .sc-hLOcjH { border: 1px solid #ccc; padding: 24px; border-radius: 12px; }
+  button { padding: 8px 14px; margin-right: 12px; }
+  output { display: block; margin-top: 24px; padding: 16px; background: #eee; }
+</style>
+</head>
 <body>
-  <div class="sc-hLOcjH sdJLK" style="width: 564px">
-    <div class="sc-cfkWqY gCrowz">
-      <div>
-        <h2 class="sc-iqkkDd sc-ggwkxX eUDsoX bALaew">Are you still there?</h2>
-        <p class="sc-folSZX jIieTq">You haven't made changes within your interactive session in over 40 minutes. Would you like to keep your interactive session running? This choice won't stop running versions.</p>
-      </div>
-      <div class="sc-ozbDa gnjHLs" style="margin-top: 32px">
-        <button id="cancel" class="sc-kLEbxe ibYcvG" tabindex="0" role="button"><span class="sc-dlwHGs liJMAE">Cancel</span></button>
-        <button id="continue" class="sc-kLEbxe caUXnJ" tabindex="0" role="button"><span class="sc-dlwHGs liJMAE">Continue editing</span></button>
+  <div class="MuiDialog-container MuiDialog-scrollPaper css-16u656j" role="presentation" tabindex="-1" style="opacity: 1">
+    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm css-1yi1ioz" role="dialog">
+      <div class="sc-kSRUrC hXDjae">
+        <div class="sc-hLOcjH sdJLK" style="width: 564px">
+          <div class="sc-cfkWqY iIXwVo">
+            <div>
+              <h2 class="sc-iqkkDd sc-ggwkxX csShwb bALaew">Are you still there?</h2>
+              <p class="sc-folSZX junAP">You haven't made changes within your interactive session in over 40 minutes. Would you like to keep your interactive session running? This choice won't stop running versions.</p>
+            </div>
+            <div class="sc-ozbDa gnjHLs" style="margin-top: 32px">
+              <button class="sc-kLEbxe iwyUNe" tabindex="0" role="button"><span class="sc-dlwHGs cVnQIi">Cancel</span></button>
+              <button class="sc-kLEbxe aFtIx" tabindex="0" role="button" id="continue"><span class="sc-dlwHGs cVnQIi">Continue editing</span></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <output id="result">Esperando clic automático…</output>
+  <output id="result">Esperando un clic…</output>
   <script>
-    document.getElementById("continue").addEventListener("click", () => {
-      document.getElementById("result").textContent = "Correcto: clic automático realizado";
-      document.querySelector(".sc-hLOcjH").remove();
+    document.getElementById("continue").addEventListener("click", (event) => {
+      const trusted = event.isTrusted;
+      document.getElementById("result").textContent =
+        "Clic detectado. event.isTrusted = " + trusted + ". " +
+        (trusted ? "Interacción del navegador/usuario." : "Clic programático detectable.");
+      document.querySelector(".MuiDialog-container").remove();
     });
-    document.getElementById("cancel").addEventListener("click", () => {
+    document.querySelector(".iwyUNe").addEventListener("click", () => {
       document.getElementById("result").textContent = "Error: se pulsó Cancel";
     });
   </script>
