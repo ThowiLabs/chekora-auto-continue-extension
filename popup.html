@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Continue Editing</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Continue Editing</h1>
+    <p class="subtitle">Mantener sesión interactiva</p>
+    <label class="switch">
+      <input id="enabled" type="checkbox" checked>
+      <span>Activar clic automático</span>
+    </label>
+    <p id="status" role="status">Cargando configuración…</p>
+    <p class="counter">Clics realizados: <strong id="clickCount">0</strong></p>
+    <p class="note">Solo actúa cuando encuentra el aviso «Are you still there?» y el botón «Continue editing». No envía datos a ningún servidor.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

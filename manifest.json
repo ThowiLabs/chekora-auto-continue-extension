@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Chekora — Continue Editing automático",
+  "version": "1.0.0",
+  "description": "Pulsa automáticamente «Continue editing» solo cuando aparece el aviso «Are you still there?» de la sesión interactiva.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "Auto Continue Editing",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "author": "ThowiLabs"
+}

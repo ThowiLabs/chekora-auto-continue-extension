@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Auto Continue Editing — Test</title></head>
+<body>
+  <div class="sc-hLOcjH sdJLK" style="width: 564px">
+    <div class="sc-cfkWqY gCrowz">
+      <div>
+        <h2 class="sc-iqkkDd sc-ggwkxX eUDsoX bALaew">Are you still there?</h2>
+        <p class="sc-folSZX jIieTq">You haven't made changes within your interactive session in over 40 minutes. Would you like to keep your interactive session running? This choice won't stop running versions.</p>
+      </div>
+      <div class="sc-ozbDa gnjHLs" style="margin-top: 32px">
+        <button id="cancel" class="sc-kLEbxe ibYcvG" tabindex="0" role="button"><span class="sc-dlwHGs liJMAE">Cancel</span></button>
+        <button id="continue" class="sc-kLEbxe caUXnJ" tabindex="0" role="button"><span class="sc-dlwHGs liJMAE">Continue editing</span></button>
+      </div>
+    </div>
+  </div>
+  <output id="result">Esperando clic automático…</output>
+  <script>
+    document.getElementById("continue").addEventListener("click", () => {
+      document.getElementById("result").textContent = "Correcto: clic automático realizado";
+      document.querySelector(".sc-hLOcjH").remove();
+    });
+    document.getElementById("cancel").addEventListener("click", () => {
+      document.getElementById("result").textContent = "Error: se pulsó Cancel";
+    });
+  </script>
+</body>
+</html>
